@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --mainColor: #007bff;
+}
+
+
+*, ::after, ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    background-color: var(--mainColor);
+}
+.start-quiz, .rules-box, .quiz-box, .result-box {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.start-btn {
+    color: var(--mainColor);
+    background-color: #fff;
+    border: none;
+    outline: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.rules-box {
+    width: 600px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+.rules-box .rules-title {
+   height: 60px;
+   width: 100%;
+   border-bottom: 1px solid grey;
+   display: flex;
+   align-items: center;
+   padding: 0 30px;
+   border-radius: 5px 5px 0 0;
+   font-size: 20px;
+   font-weight: 600;
+}
+.rules-box .rules {
+   padding: 15px 30px;
+   line-height: 1;
+   border-bottom: 1px solid grey;
+   font-size: 19px;
+}
+.rules-box .rules span {
+    color: var(--mainColor);
+    font-weight: 600;
+}
+.rules-box .button-group{
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 30px;
+}
+.rules-box .button-group button {
+    margin: 0 5px;
+}
+.quiz-box {
+    width: 550px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    opacity: 0;   
+}
+.quiz-box header {
+    position: relative;
+    z-index: 2;
+    height: 70px;
+    padding: 0 30px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
+    
+}
+.quiz-box header .quiz-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+.quiz-box .timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #cce5ff;
+    border-radius: 5px;
+    padding: 0 8px;
+    color: #004085;
+    border: 1px solid #b8daff;
+    height: 45px;
+    width: 145px;
+}
+.quiz-box .timer .time-left {
+    font-size: 17px;
+    font-weight: 400;
+    user-select: none;
+}
+.quiz-box .timer .remaining-seconds {
+    color: #fff;
+    background: #343a40;
+    border: 1px solid #343a40;
+    height: 30px;
+    width: 45px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.quiz-box header .time-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--mainColor);
+}
+.quiz-box section {
+    padding: 25px 30px 20px 30px;
+}
+.quiz-box section .question {
+    font-size: 25px;
+    font-weight: 600;
+}
+.quiz-box section .choices {
+    padding: 20px 0;
+    display: block;
+}
+.quiz-box section .choices .choice {
+    background: aliceblue;
+    margin-bottom: 15px;
+    border: 1px solid #84c5fe;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-box section .choices .choice:nth-child(4) {
+    margin-bottom: 0px;
+}
+.bi-check-circle {
+    color: green;
+    font-size: 20px;
+}
+.bi-x-circle{
+    color: #a42834;
+    font-size: 20px;
+}
+
+ .quiz-box section .choices .choice .icons i{
+   display: none;
+}
+.quiz-box section .choices .choice.correct .icons i:first-child {
+   display: block !important;
+}
+.quiz-box section .choices .choice.correct .icons i:last-child {
+    display: none !important;
+}
+.quiz-box section .choices .choice.incorrect .icons i:first-child {
+    display: none !important;
+ }
+ .quiz-box section .choices .choice.incorrect .icons i:last-child {
+     display: block !important;
+ } 
+
+.quiz-box section .choices .choice:hover {
+    color: #004085;
+    background: #cce5ff;
+    border: 1px solid #b8daff;
+}
+.incorrect {
+    color: #a42834;
+    background: #f8d7da !important;
+    border-color: #a42834 !important;
+}
+.correct {
+    color: #23903c;
+    border-color: #23903c !important;
+    background: #d4edda !important;
+}
+.quiz-box footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid lightgrey;
+    padding: 0 30px;
+}
+/* Result box */
+.result-box {
+    background: #fff;
+    width: 450px;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    opacity: 0;  
+}
+.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.result-box .bi-flag {
+    font-size: 80px;
+    color: var(--mainColor);
+    margin-bottom: 10px;
+}
+.result-box .completed-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+.result-box .result-text {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+    text-align: center;
+}
+.result-box .result-buttons button {
+    margin: 15px;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
+.hideNext {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .rules-box {
+        width: 470px;
+    }
+    .quiz-box {
+        width: 430px;
+    }
+    .quiz-box header .quiz-title {
+        font-size: 17px;
+    }
+    .quiz-box .timer .time-left {
+        font-size: 15px;
+    }
+    .quiz-box .timer .remaining-seconds {
+        
+        width: 38px;
+        font-size: 17px;
+    }
+    .quiz-box section .choices .choice {
+        font-size: 16px;
+    }
+    .bi-check-circle, .bi-x-circle {
+        font-size: 16px;
+    }
+    .quiz-box section .question {
+        font-size: 22px;
+    }
+    .rules-box .rules {
+        font-size: 14px;
+     }
+}
+@media screen and (max-width: 540px){
+    .rules-box {
+        width: 400px;
+    }
+    .quiz-box {
+        width: 380px;
+    }
+    .result-box {
+        width: 310px;
+    }
+    .rules-box .rules {
+        font-size: 12px;
+     }
+     .rules-box .button-group {
+        padding: 0 15px;
+    }
+    .quiz-box .timer .time-left {
+        font-size: 14px;
+    }
+    .quiz-box .timer .remaining-seconds {
+        width: 35px;
+        font-size: 15px;
+    }
+    .start-btn {
+        padding: 13px 26px;
+        font-size: 18px;
+    }
+     h3 {
+        font-size: 22px;
+    }
+    .button-group button {
+        font-size: 13px;
+        padding: 6px 9px;
+        text-align: center;
+        margin-top: 2px;
+    }
+    .result-box .completed-text {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .result-box .result-text {
+        font-size: 16px;
+    }
+    .result-box .result-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 2px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .rules-box {
+        width: 300px;
+    }
+    .quiz-box {
+        width: 300px;
+    }
+    .result-box {
+      width: 270px;
+    }
+    .result-box .bi-flag {
+        font-family: 50px;
+    }
+    .rules-box .rules {
+        font-size: 8px;
+    }
+    h3 {
+        font-size: 18px;
+    }
+    .button-group button {
+        font-size: 14px;
+        padding: 4px 7px;
+        margin-top: 2px;
+    }
+    .quiz-box {
+        transform: 0;
+    }
+    .quiz-box .timer .time-left {
+        font-size: 10px;
+    }
+   .quiz-box .timer .remaining-seconds {
+        width: 28px;
+        font-size: 13px;
+    }
+    .quiz-box section .question {
+        font-size: 20px;
+    }
+    .quiz-box section .choices .choice {
+        font-size: 12px;
+    }
+    .result-box .completed-text {
+        font-size: 15px;
+    }
+    .result-box .result-text {
+        font-size: 14px;
+    }
+    .result-box .bi-flag {
+        font-size: 60px;
+    }
+}
+
+
+
+
+
